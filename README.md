@@ -94,23 +94,177 @@ ___
 5) STRESS TEST -> مايك خربوتلي
 
 # APIs 
--  register (/Auth/register) 
+-  register (/Auth/register) :
+.  Post
+. Request : {
+"fullName": "obada",
+"email" : "obada2@mail.com",
+"password": "12345678"
+}
+. Response : "Registered"
+
+------------------
 -  Login (/Auth/Login )
+. Post
+. Request : {
+"email" : "obada2@mail.com",
+"password": "12345678"
+}
+. Response : {
+    "Token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdGFmZjFAZXhhbXBsZS5jb20iLCJjcmVhdGVkIjoxNzY4MzE5OTYyODI1LCJleHAiOjE3Njg0MDYzNjJ9.8YW36NatGvpkYcOXxQA-aO7K683UqL9kdw41uXXvDNY",
+    "message": "login done",
+    "username": "obada",
+    "ID": 1
+}
+----------------------
 -  user appointment (/Auth/myappoinments) for customer and staff
+. GET
+.Response : [ {
+        "id": 1,
+        "serviceId": 148,
+        "serviceName": "Mobile App Development 25",
+        "staffId": 18,
+        "staffName": "Staff 3",
+        "customerId": 1,
+        "customerName": "Ahmad Staff",
+        "status": "PENDING",
+        "startTime": "2026-12-28T10:00:00",
+        "endTime": "2026-12-28T10:35:00"
+    }]
+
+----------------------------
+
 - get services (/ser/get)
+GET
+.Response:
+[
+    {
+        "serviceId": 1,
+        "serviceName": "Mobile App Development 18",
+        "durationMinutes": 110,
+        "price": 50000.0,
+        "staff": [
+            {
+                "id": 11,
+                "fullName": "Staff 1"
+            }]
+
+
+---------------------------
 - get available appointment (/Appoinment/get/Available)
+. GET
+. Request:
+  Params : ser_id : 1
+           date   : 2026-01-01
+           Staff_id : 1
+  Response :[
+    {
+        "start": "2026-01-01T11:30:00",
+        "end": "2026-01-01T12:00:00"
+    },
+    {
+        "start": "2026-01-01T12:00:00",
+        "end": "2026-01-01T12:30:00"
+    }]
+
+-----------------------
 - Book appointment (/Appoinment/Book)
+ . GET
+ . Requset :
+  Params :  ser_id : 1
+           date   : 2026-01-01T11:30:00
+           Staff_id : 1
+
+Response : "Appoinment is Pending "
+
+-------------------------
+
 - customer cancel appointment (/Auth/cancel)
+. GET
+. Request :
+Params : Appid : 1
+. Response : "Appointment is Cancelled"
+-----------------------
+
 - notifications (/notification/unseen)
+  . GET
+. Response :  "MESAAGE:": [
+        "New appointment pending ",
+        "Your appointment is FINISHED"]
 
-
-
-- ------
+- ---------
 * Admin APIS:
 - create service (/ser/create)
+ . POST
+  . Requset :
+  {
+  "name": "Web dev",
+  "durationMinutes": 30,
+  "price": 50,
+  "staffIds": [11]
+. Response : "Service created with staff"
+
+---------
 - update service (/ser/update/{ser_id})
+ . POST
+  . Requset :
+  {
+  "name": "Web dev",
+  "durationMinutes": 30,
+  "price": 50,
+  "staffIds": [11]
+. Response :   "Service updated"
+------------------
 - get all appointments (/get/appointments)
+. GET
+. Request :
+  . Params : date : 2026-01-01
+. Respones : [
+    {
+        "ID": 8,
+        "start": "2026-01-01T14:30:00",
+        "end": "2026-01-01T15:05:00",
+        "Staff_id": 18,
+        "Staff_name": "Staff 3",
+        "customer_id": 1,
+        "customer_name": "Ahmad Staff",
+        "service_title": " web dev ",
+        "status": "PENDING"
+    }]  
+  
+-----------
 - Accept Appointment (/Admin/approve)
+. GET
+. Request :
+   .Params:
+      Appid : 1
+ .Response :    "Appointment is approved"
+
+--------------
 - Reject Appointment (/Admin/reject)
+. GET
+. Request :
+   .Params:
+      Appid : 1
+ .Response :    "Appointment is Canceled"
+
+
 - update Appointment status (/Admin/update_status)
+. POST
+. Request :{
+       "Appid": 62,
+       "STATUS":APPROVED
+  }
+. Response :"Status updated to APPROVED"
+    
+  
+
+
+
+
+
+
+
+
+
 -------"# Apointment-project-2" 
