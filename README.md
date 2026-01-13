@@ -26,7 +26,7 @@ jdbc:h2:file:C:/Users/LENOVO/servcie4
  - Admin Email: admin@admin.com
  - Admin Password: 123456789
 ملاحظة: نسنخدمه لانشاء الخدمات او قبول المواعيد و تغيير حالتها 
-
+ملاحظة : استخدمت STOMP WebSocket Client Chrome Ext لكي نفحص websocket عند انشاء الاشعارات يتم رابط الويب سوكت (https://localhost:8443/ws) و لرؤية الاشعار (/notify/private.user_id)
 شرح بنية النظام :
 النظام بتبع نمط CONTROLLER - SERVICES -REPOSITORY-ENTITY
 
